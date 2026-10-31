@@ -11,7 +11,11 @@
         //Otherwise read data and add up the variables inside the map itself
     //Close the file
 
-    //
+    //Begin a time-based simulation for building up skills
+        //By using a for loop, go through 25 time intervals
+            //Randomly decide if the person either builds up or doing mistakes on the skill
+                //Increase skill value if building up, decrease if doing mistakes
+            //Print the changes a la "<person name>'s skill: <hobby> - points increased/decreased"
 
 //Define a function to simulate the changes of 
     //Declare the parameters: map of skills

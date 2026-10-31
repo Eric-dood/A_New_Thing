@@ -1,7 +1,7 @@
 Overview
 -------------------------------------
 For my project, I'm going to depict a simulation of how much people can build their skills over
-a couple days and how they find new, improve, or remove skills, in this case being 15 days.
+a couple days and how they improve or decrease skills, in this case being 15 days.
 For the most part, this is inspired by the video game Sims, considering it also had the feature
 to build up people's skills, or in this case Sims. Regardless, it's still a project that can be
 applied to life.
