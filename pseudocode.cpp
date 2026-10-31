@@ -17,5 +17,9 @@
                 //Increase skill value if building up, decrease if doing mistakes
             //Print the changes a la "<person name>'s skill: <hobby> - points increased/decreased"
 
+    //Wait/pause to simulate the passage of time intervals
+    
+//End of main function
+
 //Define a function to simulate the changes of 
     //Declare the parameters: map of skills
