@@ -1,14 +1,15 @@
 Overview
 -------------------------------------
-For my project, I'm going to depict a simulation of how much Sims can build their skills over
-a couple days, in this case being 15 days. For the most part, this is based on a video game
-of the same name, Sims, but it's still a project that can be applied to real life, considering
-people can learn skills as time passes.
+For my project, I'm going to depict a simulation of how much people can build their skills over
+a couple days and how they find new, improve, or remove skills, in this case being 15 days.
+For the most part, this is inspired by the video game Sims, considering it also had the feature
+to build up people's skills, or in this case Sims. Regardless, it's still a project that can be
+applied to life.
 
 Implementation
 -------------------------------------
 Considering how complex the project is going to be, I plan to use std::map in order to store
 all of the skill information, which are going to be ultimately stored in std::lists. Each list is
-going to contain a certain skill, which are either Writing, Cooking, Painting, or Photograpny.
+going to contain a certain skill, which are either Writing, Cooking, Painting, Photography, etc.
 All of those skills will be initially stored in a external text file in which will be read by the
 code itself by using the library "fstream".
