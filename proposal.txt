@@ -2,7 +2,8 @@ Overview
 -------------------------------------
 For my project, I'm going to depict a simulation of how much Sims can build their skills over
 a couple days, in this case being 15 days. For the most part, this is based on a video game
-of the same name, Sims, so it's more or less going to be just a project made out of fun.
+of the same name, Sims, but it's still a project that can be applied to real life, considering
+people can learn skills as time passes.
 
 Implementation
 -------------------------------------
