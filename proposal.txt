@@ -1,7 +1,8 @@
 Overview
 -------------------------------------
-For my project, I'm going to depict a simulation of 
+For my project, I'm going to depict a simulation of how much Sims can build their skills over
+a couple days, in this case being 10 days.
 
 Implementation
 -------------------------------------
-For this project, I plan to use std::map
+Considering how complex the project is going to be, I plan to use std::map in order to store 
