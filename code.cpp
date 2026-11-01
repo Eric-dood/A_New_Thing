@@ -15,6 +15,7 @@ const int SZ_SKILLS = 50, LISTSIZE = 10, DAYS = 25;
 
 //Include function prototypes
 void modifyHobby(map<string, list<double>> &m, int choice);
+void printHobbies(map<string, list<double>> m);
 
 //Define the main function
 int main()
@@ -59,13 +60,7 @@ int main()
         //Call modifyHobby()
         modifyHobby(personSkill, change);
         //Print the changes a la "<person name>'s skill: <hobby> - points increased/decreased"
-        for (map<string, list<double>>::iterator it = personSkill.begin(); it != personSkill.end(); ++it)
-        {
-            cout << it->first << ": ";
-            for (auto skillNum : it->second)
-                cout << skillNum << " ";
-            cout << endl;
-        }
+        printHobbies(personSkill);
         auto stop = high_resolution_clock::now();
         auto dur = duration_cast<nanoseconds>(stop - start);
         cout << "--------------------------------" << endl << "Time passed: " << dur.count() << " nanoseconds" << endl << endl;
@@ -82,4 +77,17 @@ int main()
 void modifyHobby(map<string, list<double>> &m, int choice) {
     //Increase skill value if building up, decrease if doing mistakes
     //m.for_each()
+}
+
+//Define printHobbies()
+void printHobbies(map<string, list<double>> m)
+{
+    cout << "Skill" << setw(5) << "|" << setw(10) << "Passion" << setw(10) << "Effort" << setw(10) << "Enjoyment" << endl;
+    for (map<string, list<double>>::iterator it = m.begin(); it != m.end(); ++it)
+    {
+        cout << it->first << " | ";
+        for (auto skillNum : it->second)
+            cout << skillNum << " ";
+        cout << endl;
+    }
 }
