@@ -1,3 +1,7 @@
 For the project, I need to create one function. In this case, it will
 most likely be about increasing and decreasing the three skill levels.
-I'll call it "void modifyHobby()".
+I'll call it "void modifyHobby(map<string, list<double>> &m, int choice)".
+
+This function will most likely tend to increase or decrease depending on
+the integer parameter value. 0 will decrease the skill level and 1
+will increase the skill level.

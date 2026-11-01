@@ -13,6 +13,9 @@ using namespace std::chrono;
 //Include global constants
 const int SZ_SKILLS = 50, LISTSIZE = 20, DAYS = 25;
 
+//Include function prototypes
+void modifyHobby(map<string, list<double>> &m, int choice);
+
 //Define the main function
 int main()
 {
@@ -52,9 +55,8 @@ int main()
         auto start = high_resolution_clock::now();
         //Randomly decide if the person either builds up or doing mistakes on the skill
         int change = rand() % 2;
-        //Increase skill value if building up, decrease if doing mistakes
-        if (!change) //Decreasing
-
+        //Call modifyHobby()
+        modifyHobby(personSkill, change);
         //Print the changes a la "<person name>'s skill: <hobby> - points increased/decreased"
 
         auto stop = high_resolution_clock::now();
@@ -66,3 +68,9 @@ int main()
     return 0;
 }
 //End of main function
+
+//Define modifyHobby()
+void modifyHobby(map<string, list<double>> &m, int choice) {
+    //Increase skill value if building up, decrease if doing mistakes
+    //m.for_each()
+}
