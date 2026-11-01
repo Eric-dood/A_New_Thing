@@ -11,7 +11,7 @@ using namespace std;
 using namespace std::chrono;
 
 //Include global constants
-const int SZ_SKILLS = 50, SZ_NAMES = 325, LISTSIZE = 20, DAYS = 25;
+const int SZ_SKILLS = 50, LISTSIZE = 20, DAYS = 25;
 
 //Define the main function
 int main()
@@ -20,8 +20,8 @@ int main()
     srand(time(0));
 
     //Initialize a map to store all of the skill information containing lists of skills
-    map<string, list<string>> personSkill;
-    string skills[SZ_SKILLS], names[SZ_NAMES];
+    map<string, list<double>> personSkill;
+    string skills[SZ_SKILLS];
     //Define the fstream variable that opens up files to read data about skills
     fstream file("skills.txt"), file2("names.txt");
     //If the skill file does not exist, print a message and exit
@@ -34,24 +34,14 @@ int main()
         //Close the file
         file.close();
     }
-    //Do it again, but for the names; if the name file does not exist, print a message and exit
-    if (!file2.good())
-        cout << "ERROR: skills.txt doesn't exist!" << endl;
-    else //Otherwise read data and add up the variables inside the array itself
-    {
-        int i = 0;
-        while (file2 >> names[i++]);
-        //Close the file
-        file.close();
-    }
 
     //Begin filling up some of the skills
     for (int i = 0; i < LISTSIZE; i++) {
-        personSkill[names[rand() % SZ_NAMES]] =
+        personSkill[skills[rand() % SZ_SKILLS]] =
         {
-            skills[rand() % SZ_SKILLS],
-            skills[rand() % SZ_SKILLS],
-            skills[rand() % SZ_SKILLS],
+            double(rand() % 1000) / 10,
+            double(rand() % 1000) / 10,
+            double(rand() % 1000) / 10,
         };
     }
 
@@ -64,6 +54,7 @@ int main()
         int change = rand() % 2;
         //Increase skill value if building up, decrease if doing mistakes
         if (!change) //Decreasing
+
         //Print the changes a la "<person name>'s skill: <hobby> - points increased/decreased"
 
         auto stop = high_resolution_clock::now();
