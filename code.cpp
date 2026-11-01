@@ -8,13 +8,17 @@
 #include <list>
 #include <chrono>
 using namespace std;
+using namespace std::chrono;
 
 //Include global constants
-const int SZ_SKILLS = 50;
+const int SZ_SKILLS = 50, DAYS = 25;
 
 //Define the main function
 int main()
 {
+    //Random seed generator
+    srand(time(0));
+    
     //Initialize a map to store all of the skill information containing lists of skills
     map<string, list<int>> personSkill;
     string skills[SZ_SKILLS];
@@ -32,8 +36,14 @@ int main()
     }
 
     //Begin a time-based simulation for building up skills
-        //By using a for loop, go through 25 time intervals
-            //Randomly decide if the person either builds up or doing mistakes on the skill
+    //By using a for loop, go through 25 time intervals
+    for (int i = 0; i < DAYS; i++)
+    {
+        auto start = high_resolution_clock::now();
+        //Randomly decide if the person either builds up or doing mistakes on the skill
+        int change = rand() % 2;
+        auto stop = high_resolution_clock::now();
+    }
                 //Increase skill value if building up, decrease if doing mistakes
             //Print the changes a la "<person name>'s skill: <hobby> - points increased/decreased"
 
