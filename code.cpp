@@ -1,3 +1,4 @@
+//COMSC210 | Lab 30 | Eric-Giulio Hedes
 //Include global constants and necessary headers for file handling, structures, and more
 
 //Define function prototypes
