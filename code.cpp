@@ -11,28 +11,48 @@ using namespace std;
 using namespace std::chrono;
 
 //Include global constants
-const int SZ_SKILLS = 50, DAYS = 25;
+const int SZ_SKILLS = 50, SZ_NAMES = 325, LISTSIZE = 20, DAYS = 25;
 
 //Define the main function
 int main()
 {
     //Random seed generator
     srand(time(0));
-    
+
     //Initialize a map to store all of the skill information containing lists of skills
-    map<string, list<int>> personSkill;
-    string skills[SZ_SKILLS];
-    //Define the fstream variable that opens up a file & open up the file to read data about skills
-    fstream file("skills.txt");
-    //If file does not exist, print a message and exit
+    map<string, list<string>> personSkill;
+    string skills[SZ_SKILLS], names[SZ_NAMES];
+    //Define the fstream variable that opens up files to read data about skills
+    fstream file("skills.txt"), file2("names.txt");
+    //If the skill file does not exist, print a message and exit
     if (!file.good())
         cout << "ERROR: skills.txt doesn't exist!" << endl;
-    else //Otherwise read data and add up the variables inside the map itself
+    else //Otherwise read data and add up the variables inside the array itself
     {
         int i = 0;
         while (file >> skills[i++]);
         //Close the file
         file.close();
+    }
+    //Do it again, but for the names; if the name file does not exist, print a message and exit
+    if (!file2.good())
+        cout << "ERROR: skills.txt doesn't exist!" << endl;
+    else //Otherwise read data and add up the variables inside the array itself
+    {
+        int i = 0;
+        while (file2 >> names[i++]);
+        //Close the file
+        file.close();
+    }
+
+    //Begin filling up some of the skills
+    for (int i = 0; i < LISTSIZE; i++) {
+        personSkill[names[rand() % SZ_NAMES]] =
+        {
+            skills[rand() % SZ_SKILLS],
+            skills[rand() % SZ_SKILLS],
+            skills[rand() % SZ_SKILLS],
+        };
     }
 
     //Begin a time-based simulation for building up skills
@@ -42,10 +62,12 @@ int main()
         auto start = high_resolution_clock::now();
         //Randomly decide if the person either builds up or doing mistakes on the skill
         int change = rand() % 2;
+        //Increase skill value if building up, decrease if doing mistakes
+        if (!change) //Decreasing
+        //Print the changes a la "<person name>'s skill: <hobby> - points increased/decreased"
+
         auto stop = high_resolution_clock::now();
     }
-                //Increase skill value if building up, decrease if doing mistakes
-            //Print the changes a la "<person name>'s skill: <hobby> - points increased/decreased"
 
     //Wait/pause to simulate the passage of time intervals
 
@@ -53,6 +75,3 @@ int main()
     return 0;
 }
 //End of main function
-
-//Define a function to simulate the changes of 
-    //Declare the parameters: map of skills
