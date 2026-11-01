@@ -18,12 +18,18 @@ int main()
     //Initialize a map to store all of the skill information containing lists of skills
     map<string, list<int>> personSkill;
     string skills[SZ_SKILLS];
-    //Define the fstream variable that opens up a file
+    //Define the fstream variable that opens up a file & open up the file to read data about skills
     fstream file("skills.txt");
-    //Open up the file to read data about skills
-        //If file does not exist, print a message and exit
-        //Otherwise read data and add up the variables inside the map itself
-    //Close the file
+    //If file does not exist, print a message and exit
+    if (!file.good())
+        cout << "ERROR: skills.txt doesn't exist!" << endl;
+    else //Otherwise read data and add up the variables inside the map itself
+    {
+        int i = 0;
+        while (file >> skills[i++]);
+        //Close the file
+        file.close();
+    }
 
     //Begin a time-based simulation for building up skills
         //By using a for loop, go through 25 time intervals
