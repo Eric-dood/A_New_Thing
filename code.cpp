@@ -11,7 +11,8 @@ using namespace std;
 using namespace std::chrono;
 
 //Include global constants
-const int SZ_SKILLS = 50, LISTSIZE = 10, DAYS = 25;
+const int SZ_SKILLS = 50, LISTSIZE = 10, DAYS = 15;
+const int WIDTH = 10;
 
 //Include function prototypes
 void modifyHobby(map<string, list<double>> &m, int choice);
@@ -76,18 +77,22 @@ int main()
 //Define modifyHobby()
 void modifyHobby(map<string, list<double>> &m, int choice) {
     //Increase skill value if building up, decrease if doing mistakes
-    //m.for_each()
+    for (map<string, list<double>>::iterator it = m.begin(); it != m.end(); ++it) {
+        for (auto skillNum : it->second) {
+            skillNum += ((!choice) ? -1 : 1);
+        }
+    }
 }
 
 //Define printHobbies()
 void printHobbies(map<string, list<double>> m)
 {
-    cout << "Skill" << setw(5) << "|" << setw(10) << "Passion" << setw(10) << "Effort" << setw(10) << "Enjoyment" << endl;
+    cout << left << "Skill" << right << setw(WIDTH/2) << "|" << setw(WIDTH) << "Passion" << setw(WIDTH) << "Effort" << setw(WIDTH) << "Enjoyment" << endl;
     for (map<string, list<double>>::iterator it = m.begin(); it != m.end(); ++it)
     {
-        cout << it->first << " | ";
+        cout << left << it->first << right << setw(WIDTH/2) << "|";
         for (auto skillNum : it->second)
-            cout << skillNum << " ";
+            cout << skillNum << setw(WIDTH);
         cout << endl;
     }
 }
