@@ -11,7 +11,7 @@ using namespace std;
 using namespace std::chrono;
 
 //Include global constants
-const int SZ_SKILLS = 50, LISTSIZE = 20, DAYS = 25;
+const int SZ_SKILLS = 50, LISTSIZE = 10, DAYS = 25;
 
 //Include function prototypes
 void modifyHobby(map<string, list<double>> &m, int choice);
@@ -52,14 +52,23 @@ int main()
     //By using a for loop, go through 25 time intervals
     for (int i = 0; i < DAYS; i++)
     {
+        cout << "DAY " << i + 1 << endl << "--------------------------------" << endl;
         auto start = high_resolution_clock::now();
         //Randomly decide if the person either builds up or doing mistakes on the skill
         int change = rand() % 2;
         //Call modifyHobby()
         modifyHobby(personSkill, change);
         //Print the changes a la "<person name>'s skill: <hobby> - points increased/decreased"
-
+        for (map<string, list<double>>::iterator it = personSkill.begin(); it != personSkill.end(); ++it)
+        {
+            cout << it->first << ": ";
+            for (auto skillNum : it->second)
+                cout << skillNum << " ";
+            cout << endl;
+        }
         auto stop = high_resolution_clock::now();
+        auto dur = duration_cast<nanoseconds>(stop - start);
+        cout << "--------------------------------" << endl << "Time passed: " << dur.count() << " nanoseconds" << endl << endl;
     }
 
     //Wait/pause to simulate the passage of time intervals
