@@ -1,11 +1,18 @@
 //COMSC210 | Lab 30 | Eric-Giulio Hedes
 //Include global constants and necessary headers for file handling, structures, and more
-
-//Define function prototypes
+#include <iostream>
+#include <iomanip>
+#include <algorithm>
+#include <map>
+#include <list>
+#include <chrono>
+using namespace std;
 
 //Define the main function
+int main()
+{
     //Initialize a map to store all of the skill information containing lists of skills
-
+    map<string, list<int>> personSkill;
     //Define the fstream variable that opens up a file
     //Open up the file to read data about skills
         //If file does not exist, print a message and exit
@@ -19,7 +26,10 @@
             //Print the changes a la "<person name>'s skill: <hobby> - points increased/decreased"
 
     //Wait/pause to simulate the passage of time intervals
-    
+
+    //Return 0
+    return 0;
+}
 //End of main function
 
 //Define a function to simulate the changes of 
