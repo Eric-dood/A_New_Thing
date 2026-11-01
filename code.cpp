@@ -1,19 +1,25 @@
 //COMSC210 | Lab 30 | Eric-Giulio Hedes
-//Include global constants and necessary headers for file handling, structures, and more
+//Include necessary headers for file handling, structures, and more
 #include <iostream>
 #include <iomanip>
+#include <fstream>
 #include <algorithm>
 #include <map>
 #include <list>
 #include <chrono>
 using namespace std;
 
+//Include global constants
+const int SZ_SKILLS = 50;
+
 //Define the main function
 int main()
 {
     //Initialize a map to store all of the skill information containing lists of skills
     map<string, list<int>> personSkill;
+    string skills[SZ_SKILLS];
     //Define the fstream variable that opens up a file
+    fstream file("skills.txt");
     //Open up the file to read data about skills
         //If file does not exist, print a message and exit
         //Otherwise read data and add up the variables inside the map itself
