@@ -67,8 +67,6 @@ int main()
         cout << "--------------------------------" << endl << "Time passed: " << dur.count() << " nanoseconds" << endl << endl;
     }
 
-    //Wait/pause to simulate the passage of time intervals
-
     //Return 0
     return 0;
 }
@@ -78,8 +76,9 @@ int main()
 void modifyHobby(map<string, list<double>> &m, int choice) {
     //Increase skill value if building up, decrease if doing mistakes
     for (map<string, list<double>>::iterator it = m.begin(); it != m.end(); ++it) {
-        for (auto skillNum : it->second) {
-            skillNum += ((!choice) ? -1 : 1);
+        for (auto &skillNum : it->second) {
+            //Decrease or increase skill num; check if it's higher than 1
+            if (skillNum > 1) skillNum += ((!choice) ? -1 : 1);
         }
     }
 }
@@ -87,12 +86,17 @@ void modifyHobby(map<string, list<double>> &m, int choice) {
 //Define printHobbies()
 void printHobbies(map<string, list<double>> m)
 {
-    cout << left << "Skill" << right << setw(WIDTH/2) << "|" << setw(WIDTH) << "Passion" << setw(WIDTH) << "Effort" << setw(WIDTH) << "Enjoyment" << endl;
+    //Set the decimal precision to 1
+    cout << fixed << setprecision(1);
+    //Print the table elements
+    cout << left << setw(WIDTH+5) << "Skill" << "|" << right << setw(WIDTH) << "Passion" << setw(WIDTH) << "Effort" << setw(WIDTH) << "Enjoyment" << endl;
+    //Then by using a ranged loop, print out the elements & the skills themselves
     for (map<string, list<double>>::iterator it = m.begin(); it != m.end(); ++it)
     {
-        cout << left << it->first << right << setw(WIDTH/2) << "|";
+        cout << left << setw(WIDTH+5) << it->first << "|";
         for (auto skillNum : it->second)
-            cout << skillNum << setw(WIDTH);
+            cout << right << setw(WIDTH) << skillNum;
+        //Leave space
         cout << endl;
     }
 }
