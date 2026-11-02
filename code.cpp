@@ -15,7 +15,7 @@ const int SZ_SKILLS = 50, LISTSIZE = 25, MAXDAYS = 50;
 const int WIDTH = 10;
 
 //Include function prototypes
-int selectFeature(string name, int size);
+int selectFeature(int max);
 void modifyHobby(map<string, list<double>> &m, int choice);
 void printHobbies(map<string, list<double>> m);
 
@@ -44,7 +44,8 @@ int main()
     }
 
     //Ask the user how many hobbies can a person have
-    skillNum = selectFeature("skills", LISTSIZE);
+    cout << "Enter the amount of skills/hobbies a person can have (1-" << LISTSIZE << "): " << endl;
+    skillNum = selectFeature(LISTSIZE);
 
     //Begin filling up some of the skills
     for (int i = 0; i < skillNum; i++) {
@@ -57,13 +58,14 @@ int main()
     }
 
     //Ask the user how many days it should have
-    days = selectFeature("days", MAXDAYS);
+    cout << "Select how many days should the skills change over time (1-" << MAXDAYS << "): " << endl;
+    days = selectFeature(MAXDAYS);
 
     //Begin a time-based simulation for building up skills
     //By using a for loop, go through 25 time intervals
     for (int i = 0; i < days; i++)
     {
-        cout << "DAY " << i + 1 << endl << "--------------------------------" << endl;
+        cout << "DAY " << i + 1 << endl << "------------------------------------------------" << endl;
         auto start = high_resolution_clock::now();
         //Randomly decide if the person either builds up or doing mistakes on the skill
         int change = rand() % 2;
@@ -73,7 +75,8 @@ int main()
         printHobbies(personSkill);
         auto stop = high_resolution_clock::now();
         auto dur = duration_cast<nanoseconds>(stop - start);
-        cout << "--------------------------------" << endl << "Time passed: " << dur.count() << " nanoseconds" << endl << endl;
+        cout << "------------------------------------------------" << endl;
+        cout << "Time passed: " << dur.count() << " nanoseconds" << endl << endl;
     }
 
     //Return 0
@@ -117,6 +120,7 @@ void printHobbies(map<string, list<double>> m)
     cout << fixed << setprecision(1);
     //Print the table elements
     cout << left << setw(WIDTH+5) << "Skill" << "|" << right << setw(WIDTH) << "Passion" << setw(WIDTH) << "Effort" << setw(WIDTH) << "Enjoyment" << endl;
+    cout << "------------------------------------------------" << endl;
     //Then by using a ranged loop, print out the elements & the skills themselves
     for (map<string, list<double>>::iterator it = m.begin(); it != m.end(); ++it)
     {
