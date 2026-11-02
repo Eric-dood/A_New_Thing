@@ -1,0 +1,16 @@
+For the project, I need to create one function. In this case, it will
+most likely be about increasing and decreasing the three skill levels.
+I'll call it "void modifyHobby(map<string, list<double>> &m, int choice)".
+
+This function will most likely tend to increase or decrease depending on
+the integer parameter value. 0 will decrease the skill level and 1
+will increase the skill level.
+
+Currently the program is going better with proper printing, but I have yet
+to implement the function. I might use for_each() or something else.
+
+The printing has been turned to its own function. Now I gotta figure out
+what I should do with the remaining function.
+
+I went with a simpler method of a ranged loop and references instead of
+for_each, and the function works as intended.
