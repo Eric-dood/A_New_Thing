@@ -31,10 +31,13 @@ int main()
     //Initialize the days variable
     int days = 0, skillNum = 0;
     //Define the fstream variable that opens up files to read data about skills
-    fstream file("skills.txt"), file2("names.txt");
-    //If the skill file does not exist, print a message and exit
+    fstream file("skills.txt");
+    //If the skill file does not exist, print a message and exit the program
     if (!file.good())
+    {
         cout << "ERROR: skills.txt doesn't exist!" << endl;
+        return 1;
+    }
     else //Otherwise read data and add up the variables inside the array itself
     {
         int i = 0;
@@ -94,7 +97,7 @@ int selectFeature(int max) {
     //Validation loop; a number picked beyond the limits is asked to try again
     while (temp < 1 || temp > max)
     {
-        cout << "ERROR: Select a value between 1 and " << MAXDAYS << endl;
+        cout << "ERROR: Select a value between 1 and " << max << endl;
         cout << "Choice --> ";
         cin >> temp;
     }

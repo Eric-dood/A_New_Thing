@@ -3,16 +3,27 @@ the process. So far, I encountered a couple bugs regards the Maintenance phase:
 
 - Putting certain sections of code in functions (e.g. selectFeature) help with making the code more compact
 - The code wasn't too versatile, so I wanted to spice it up with replacing the MAX const int values
-with user inputs.
+with user inputs, including the max values in range-based loops.
 - During the file reading, there may be a out-of-bounds error if the i value reaches beyond the
 SZ_SKILLS array, so I wanted to put a limit to that.
 - There has been a leftover "names.txt" file that hasn't been used anywhere in the code, so
 I removed it.
-- Validation loops are important, so I added some checks throughout the segment
-- Skill values below 1 did not increase over time, and in return I had to 
+- Validation loops are important, so I added some checks throughout the segments where
+if the inputs are outside the preferred range, they get to try the functions again.
+- Skill values below 1 did not increase over time, and in return I had to
+do a if-else check if the values were under 1, meaning that they had 1 added to prevent
+the values from not changing.
 - The iterator/data types in the for loops could've been simplified further
     -> ("map<string, list<double>>::iterator" has been changed to "auto")
-- I had to change the way how selectFeature works because otherwise it would've been tougher to
-manually set up the code for both skills and days
--
-- 
+- I had to change the way how selectFeature() works because otherwise it would've been tougher to
+manually set up the code for both skills and days (e.g. using a string parameter to print out a
+different message + a check, so for function simplification I had to put the messages manually
+in the main() function.)
+- The program didn't completely exit even if the skills text file didn't exist, so I put
+'return 1' in order for it to properly exit the program.
+- file2 is deemed obsolete due to the removal of "names.txt", which in turn I removed it
+from the code.
+- In the selectFeature() funtion, the max value in the error message seemed to display
+MAXDAYS instead of the max parameter value. I had to replace that value in the function.
+
+From there, I don't think I have any more bugs.
