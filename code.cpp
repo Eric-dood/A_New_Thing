@@ -11,10 +11,11 @@ using namespace std;
 using namespace std::chrono;
 
 //Include global constants
-const int SZ_SKILLS = 50, LISTSIZE = 10, DAYS = 15;
+const int SZ_SKILLS = 50, LISTSIZE = 10, MAXDAYS = 50;
 const int WIDTH = 10;
 
 //Include function prototypes
+int selectDay();
 void modifyHobby(map<string, list<double>> &m, int choice);
 void printHobbies(map<string, list<double>> m);
 
@@ -27,6 +28,8 @@ int main()
     //Initialize a map to store all of the skill information containing lists of skills
     map<string, list<double>> personSkill;
     string skills[SZ_SKILLS];
+    //Initialize the days variable
+    int days = 0;
     //Define the fstream variable that opens up files to read data about skills
     fstream file("skills.txt"), file2("names.txt");
     //If the skill file does not exist, print a message and exit
@@ -50,9 +53,11 @@ int main()
         };
     }
 
+    //Ask the user how many days it should have
+    
     //Begin a time-based simulation for building up skills
     //By using a for loop, go through 25 time intervals
-    for (int i = 0; i < DAYS; i++)
+    for (int i = 0; i < days; i++)
     {
         cout << "DAY " << i + 1 << endl << "--------------------------------" << endl;
         auto start = high_resolution_clock::now();
@@ -71,6 +76,25 @@ int main()
     return 0;
 }
 //End of main function
+
+//Define selectDay()
+int selectDay() {
+    //Define a temporary variable used for returning
+    int temp;
+    //Prompt the user to pick a day
+    cout << "Select how many days should the skills change over time (Max " << MAXDAYS << "): " << endl;
+    cout << "Choice --> ";
+    cin >> temp;
+    //Validation loop; a number picked beyond the limits is asked to try again
+    while (temp < 1 || temp > MAXDAYS)
+    {
+        cout << "ERROR: Select a value between 1 and " << MAXDAYS << endl;
+        cout << "Choice --> ";
+        cin >> temp;
+    }
+    //If successful, return the value
+    return temp;
+}
 
 //Define modifyHobby()
 void modifyHobby(map<string, list<double>> &m, int choice) {
