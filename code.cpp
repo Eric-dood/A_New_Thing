@@ -105,10 +105,12 @@ int selectFeature(int max) {
 //Define modifyHobby()
 void modifyHobby(map<string, list<double>> &m, int choice) {
     //Increase skill value if building up, decrease if doing mistakes
-    for (map<string, list<double>>::iterator it = m.begin(); it != m.end(); ++it) {
+    for (auto it = m.begin(); it != m.end(); ++it) {
         for (auto &skillNum : it->second) {
             //Decrease or increase skill num; check if it's higher than 1
             if (skillNum > 1) skillNum += ((!choice) ? -1 : 1);
+            //Otherwise always increase the value if it's lower or equal to 1
+            else skillNum += 1;
         }
     }
 }
@@ -122,7 +124,7 @@ void printHobbies(map<string, list<double>> m)
     cout << left << setw(WIDTH+5) << "Skill" << "|" << right << setw(WIDTH) << "Passion" << setw(WIDTH) << "Effort" << setw(WIDTH) << "Enjoyment" << endl;
     cout << "------------------------------------------------" << endl;
     //Then by using a ranged loop, print out the elements & the skills themselves
-    for (map<string, list<double>>::iterator it = m.begin(); it != m.end(); ++it)
+    for (auto it = m.begin(); it != m.end(); ++it)
     {
         cout << left << setw(WIDTH+5) << it->first << "|";
         for (auto skillNum : it->second)

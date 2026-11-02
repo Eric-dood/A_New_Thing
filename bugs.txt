@@ -1,6 +1,7 @@
 There's not a lot of things that are wrong with the code itself, but there might be some issues throughout
 the process. So far, I encountered a couple bugs regards the Maintenance phase:
 
+- Putting certain sections of code in functions (e.g. selectFeature) help with making the code more compact
 - The code wasn't too versatile, so I wanted to spice it up with replacing the MAX const int values
 with user inputs.
 - During the file reading, there may be a out-of-bounds error if the i value reaches beyond the
@@ -8,9 +9,10 @@ SZ_SKILLS array, so I wanted to put a limit to that.
 - There has been a leftover "names.txt" file that hasn't been used anywhere in the code, so
 I removed it.
 - Validation loops are important, so I added some checks throughout the segment
-- 
-- 
-- 
-- 
-- 
+- Skill values below 1 did not increase over time, and in return I had to 
+- The iterator/data types in the for loops could've been simplified further
+    -> ("map<string, list<double>>::iterator" has been changed to "auto")
+- I had to change the way how selectFeature works because otherwise it would've been tougher to
+manually set up the code for both skills and days
+-
 - 
