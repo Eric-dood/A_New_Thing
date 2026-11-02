@@ -11,11 +11,11 @@ using namespace std;
 using namespace std::chrono;
 
 //Include global constants
-const int SZ_SKILLS = 50, LISTSIZE = 10, MAXDAYS = 50;
+const int SZ_SKILLS = 50, LISTSIZE = 25, MAXDAYS = 50;
 const int WIDTH = 10;
 
 //Include function prototypes
-int selectDay();
+int selectFeature(string name, int size);
 void modifyHobby(map<string, list<double>> &m, int choice);
 void printHobbies(map<string, list<double>> m);
 
@@ -29,7 +29,7 @@ int main()
     map<string, list<double>> personSkill;
     string skills[SZ_SKILLS];
     //Initialize the days variable
-    int days = 0;
+    int days = 0, skillNum = 0;
     //Define the fstream variable that opens up files to read data about skills
     fstream file("skills.txt"), file2("names.txt");
     //If the skill file does not exist, print a message and exit
@@ -43,8 +43,11 @@ int main()
         file.close();
     }
 
+    //Ask the user how many hobbies can a person have
+    skillNum = selectFeature("skills", LISTSIZE);
+
     //Begin filling up some of the skills
-    for (int i = 0; i < LISTSIZE; i++) {
+    for (int i = 0; i < skillNum; i++) {
         personSkill[skills[rand() % SZ_SKILLS]] =
         {
             double(rand() % 1000) / 10,
@@ -54,7 +57,8 @@ int main()
     }
 
     //Ask the user how many days it should have
-    
+    days = selectFeature("days", MAXDAYS);
+
     //Begin a time-based simulation for building up skills
     //By using a for loop, go through 25 time intervals
     for (int i = 0; i < days; i++)
@@ -77,16 +81,15 @@ int main()
 }
 //End of main function
 
-//Define selectDay()
-int selectDay() {
+//Define selectFeature()
+int selectFeature(int max) {
     //Define a temporary variable used for returning
     int temp;
-    //Prompt the user to pick a day
-    cout << "Select how many days should the skills change over time (Max " << MAXDAYS << "): " << endl;
+    //Prompt the user to pick a value
     cout << "Choice --> ";
     cin >> temp;
     //Validation loop; a number picked beyond the limits is asked to try again
-    while (temp < 1 || temp > MAXDAYS)
+    while (temp < 1 || temp > max)
     {
         cout << "ERROR: Select a value between 1 and " << MAXDAYS << endl;
         cout << "Choice --> ";
