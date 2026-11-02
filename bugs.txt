@@ -1,0 +1,16 @@
+There's not a lot of things that are wrong with the code itself, but there might be some issues throughout
+the process. So far, I encountered a couple bugs regards the Maintenance phase:
+
+- The code wasn't too versatile, so I wanted to spice it up with replacing the MAX const int values
+with user inputs.
+- During the file reading, there may be a out-of-bounds error if the i value reaches beyond the
+SZ_SKILLS array, so I wanted to put a limit to that.
+- There has been a leftover "names.txt" file that hasn't been used anywhere in the code, so
+I removed it.
+- Validation loops are important, so I added some checks throughout the segment
+- 
+- 
+- 
+- 
+- 
+- 

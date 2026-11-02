@@ -38,7 +38,7 @@ int main()
     else //Otherwise read data and add up the variables inside the array itself
     {
         int i = 0;
-        while (file >> skills[i++]);
+        while (i < SZ_SKILLS && file >> skills[i++]);
         //Close the file
         file.close();
     }
